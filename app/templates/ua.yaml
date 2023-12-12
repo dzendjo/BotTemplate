@@ -1,0 +1,44 @@
+start:
+  mt: |
+    🙋‍♀️ Текст після старту!
+  lang: |
+    Choose your language (оберіть мову):
+
+
+help: |
+  Інструкції додамо згодом!
+
+
+statt:
+  mt: |
+    <a href="{{ url }}">Watch stat</a>
+  error: |
+    Error: {{ error }}
+
+    <i>Tracaback: {{ traceback }}</i>
+  base: |
+    All: {{ count }}{% if stat_dict %}
+    
+    Last sources
+      {% for key, value in stat_dict.items() %}|__<b>{{ key }}</b> - {{ value }}
+      {% endfor %}
+    {% endif %}Find by name: /base source_name
+  base_add: |
+    {% if count %}From source with name - <b>{{ source_name }}</b> came - {{ count }} users.{% else %}There is no users from <b>{{ source_name }}</b>{% endif %}
+
+
+draw:
+  mt: |
+    Available campaigns:
+    {% for campaign_name in campaigns %}
+    <b>{{ campaign_name }}:</b>
+      Total ordered: {{ campaigns[campaign_name].ordered_count }}
+      Done: {{ campaigns[campaign_name].done_count }}
+      Left: {{ campaigns[campaign_name].ordered_count - campaigns[campaign_name].done_count }}
+    {% endfor %}
+    <b>Available:</b> {{ total }}
+
+    Type "start" to start the draw!
+  start_draw_mt: The draw has started!
+  not_start_draw_mt: Draw cancelled!
+  end_draw_mt: Draw finished!
